@@ -60,13 +60,12 @@
     // Share Button
     UIImage *share = [UIImage imageNamed:@"share"];
     UIImageView *shareImageView = [[UIImageView alloc] initWithImage:share];
-    shareImageView.frame = CGRectMake(288, 21, 22, 30);
+    shareImageView.frame = CGRectMake(288, 21, 22, share.size.height);
     [headerView addSubview:shareImageView];
     
-
     
     //Post Container View
-    UIView *postContainerView = [[UIView alloc] initWithFrame:CGRectMake(10, 70, 300, 300)];
+    UIView *postContainerView = [[UIView alloc] initWithFrame:CGRectMake(10, 70, 300, 700)];
     postContainerView.backgroundColor = [UIColor whiteColor];
     postContainerView.layer.cornerRadius = 3.f;
     [scrollView addSubview:postContainerView];
@@ -109,18 +108,109 @@
     postImageView.frame = CGRectMake(-4, 130, 308, 180);
     [postContainerView addSubview:postImageView];
     
+    //UFI
+    UIImage *ufiImage = [UIImage imageNamed:@"ufi"];
+    UIView *ufi = [[UIView alloc] initWithFrame:CGRectMake(0, 324, 300, ufiImage.size.height)];
+    ufi.backgroundColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"ufi"]];
+    [postContainerView addSubview:ufi];
+    
+    //Like Button - within UFI
+
+    
+    //SupportText
+    NSString *supportingTextString = @"1,675 people like this";
+
+        UILabel *supportingText = [[UILabel alloc] initWithFrame:CGRectMake(16, 363, 320, 44)];
+    supportingText.text = supportingTextString;
+        supportingText.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+        supportingText.textColor = [UIColor blackColor];
+        [postContainerView addSubview:supportingText];
+    
+    if ([supportingText respondsToSelector:@selector(setAttributedText:)])
+    {
+        // iOS6 and above : Use NSAttributedStrings
+        const CGFloat fontSize = 14;
+        UIFont *boldFont = [UIFont boldSystemFontOfSize:fontSize];
+        UIFont *regularFont = [UIFont systemFontOfSize:fontSize];
+        UIColor *foregroundColor = [UIColor blackColor];
+        
+        // Create the attributes
+        NSDictionary *attrs = [NSDictionary dictionaryWithObjectsAndKeys:
+                               regularFont, NSFontAttributeName,
+                               foregroundColor, NSForegroundColorAttributeName, nil];
+        NSDictionary *subAttrs = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  boldFont, NSFontAttributeName, nil];
+        const NSRange range = NSMakeRange(0,12); // range of " 2012/10/14 ". Ideally this should not be hardcoded
+        
+        // Create the attributed string (text + attributes)
+        NSMutableAttributedString *attributedText =
+        [[NSMutableAttributedString alloc] initWithString:supportingTextString
+                                               attributes:attrs];
+        [attributedText setAttributes:subAttrs range:range];
+        
+        // Set it in our UILabel and we are done!
+        [supportingText setAttributedText:attributedText];
+    } else {
+        // iOS5 and below
+        // Here we have some options too. The first one is to do something
+        // less fancy and show it just as plain text without attributes.
+        // The second is to use CoreText and get similar results with a bit
+        // more of code. Interested people please look down the old answer.
+        
+        [supportingText setText:supportingTextString];
+        
+    }
+    
+    
+//    //Using Attributed Text
+//    NSString *likeCount = @"1,675 people";
+//    NSString *helperString = @"like this.";
+//    
+//    NSString *text = [NSString stringWithFormat:@"%@ %@", likeCount, helperString];
+//    
+//    // If attributed text is supported (iOS6+)
+//    if ([supportingText respondsToSelector:@selector(setAttributedText:)]) {
+//        
+//        // Define general attributes for the entire text
+//        NSDictionary *attribs = @{
+//                                  NSForegroundColorAttributeName: supportingText.textColor,
+//                                  NSFontAttributeName: supportingText.font
+//                                  };
+//        
+//        NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:text attributes:attribs];
+//        
+//        // Like Count
+//        UIColor *likeCountTreatment = [UIColor redColor];
+//        NSRange likeCountRange = [text rangeOfString:likeCount];
+//        [attributedText setAttributes:@{NSForegroundColorAttributeName:likeCountTreatment}
+//                                range:likeCountRange];
+//        
+//        // Helper String
+//        UIColor *helperStringTreatment = [UIColor greenColor];
+//        NSRange helperStringTextRange = [text rangeOfString:helperString];
+//        [attributedText setAttributes:@{NSForegroundColorAttributeName:helperStringTreatment}
+//                                range:helperStringTextRange];
+//        
+//       supportingText.attributedText = attributedText;
+//    }
+//    // If attributed text is NOT supported (iOS5-)
+//    else {
+//        supportingText.text = text;
+//    }
+//    
+
     
     
     //Comment Bar Image
     UIImage *commentbar = [UIImage imageNamed:@"commentbar"];
     UIImageView *commentbarImageView = [[UIImageView alloc] initWithImage:commentbar];
-    commentbarImageView.frame = CGRectMake(0, 391, 320, 44);
+    commentbarImageView.frame = CGRectMake(0, 394, 320, commentbar.size.height);
     [self.view addSubview:commentbarImageView];
     
     //Tab Bar Image
     UIImage *tabbar = [UIImage imageNamed:@"tabbar"];
     UIImageView *tabbarImageView = [[UIImageView alloc] initWithImage:tabbar];
-    tabbarImageView.frame = CGRectMake(0, 435, 320, 44);
+    tabbarImageView.frame = CGRectMake(0, 437, 320, tabbar.size.height);
     [self.view addSubview:tabbarImageView];
     
 }

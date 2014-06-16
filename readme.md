@@ -10,3 +10,4 @@
 * I implemented rounded corners using QuartzCore, I figured this was the correct way to this?
 * Programmatically, how do you determine the layering of the views? I was able to workaround an issue with the main post text by changing the background color to have 0 alpha. 
 
+I got really hung up on manually implementing attributedText.
