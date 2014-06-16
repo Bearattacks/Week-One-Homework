@@ -16,7 +16,9 @@ Time: 7hrs
 [-] Setup CocoaPods for managing 3rd party libraries and use TTTAttributedLabel to style the link and make it clickable. 
 
 [] Optional: Move the textfield when the keyboard appears (so close!)
+
 [] Optional: Configure the autoresizingMasks to support rotation
+
 [] Optional: Implement the same page programatically without using Interface Builder
 
 ### Notes
