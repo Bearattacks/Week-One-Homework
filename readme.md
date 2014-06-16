@@ -22,8 +22,8 @@ Time: 7hrs
 [] Optional: Implement the same page programatically without using Interface Builder
 
 ### Notes
-* I did everything programmatically rather than using a XIB. This made some things pretty hard for me at first.
+* I did everything programmatically rather than using a XIB. This made buttons very confusing, I probably should have stuck the the XIB.
 * I also used a scrollview, I wanted to try it out if that’s okay.
 * I got really hung up on manually implementing attributedText, but I eventually found a  way to do it using ranges.
-* Cocoapods was bugging out for me, I wasn’t able to get TTAttributed Label to style the link and make it clickable. I’ve been searching for similar issues and I haven’t found anything. I also tried rolling back a couple versions, but things have gotten really messed up. This is a little over my head.
+* I had issues with Cocoapods, I wasn’t able to get TTAttributed Label to style the link and make it clickable. I’ve been searching for similar issues and I haven’t found anything. I rolled back to an older version of cocoapods, this is a bit over my head.
 * I couldn’t get the comment UIView to respond to keyboard height. I think there might have been some hierarchy issues that kept me from accessing the comment box UIView I had. 
