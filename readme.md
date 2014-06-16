@@ -1,9 +1,18 @@
+
+
 # Week One Homework
+Time: 7hrs
+
 [✓] Add a container view and modify properties: backgroundColor, cornerRadius, font, textColor, shadowOffset.
+
 [-] Add buttons with different images for default and highlighted. (I was doing this programmatically, and I don’t think I’m doing this right. I do know how to do this with a XIB). 
+
 [✓] Add UIImageViews and choose the right mode: aspect fill, aspect fit, etc.
+
 [✓] Add a UITextField with a background image.
+
 [✓] Add UILabels with attributed text (instead of plain text), so that you can bold individual words.
+
 [-] Setup CocoaPods for managing 3rd party libraries and use TTTAttributedLabel to style the link and make it clickable. 
 
 [] Optional: Move the textfield when the keyboard appears (so close!)
