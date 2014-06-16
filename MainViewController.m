@@ -29,10 +29,6 @@
 {
     [super viewDidLoad];
     
-    UIView *commentImageView = [[UIView alloc] initWithFrame:CGRectMake(200, 100, 100, 100)];
-    
-    [self.view addSubview:commentImageView ];
-    
     // I got curious and tried out the scroll view, I also wanted everything to fit on the 3.5 inch phone.
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     scrollView.contentSize = CGSizeMake(320, 600);
@@ -156,6 +152,31 @@
     shareText.textColor = [UIColor colorWithRed:0.608 green:0.620 blue:0.639 alpha:1.000];
     shareText.text = @"Share";
     [ufi addSubview:shareText];
+    
+
+    //Trying out a basic button
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button setTitle:@"Like" forState:UIControlStateNormal];
+    [ufi addSubview:button];
+    
+    //This was the code I was trying to use to figure how to make custom buttons without XIB
+    UIButton *customButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [customButton setTitle:@"Like" forState:UIControlStateNormal];
+    [customButton setContentEdgeInsets:UIEdgeInsetsMake(0, 4, 0, 4)];
+    [customButton sizeToFit];
+    customButton.center = CGPointMake(70, 20);
+    
+    [customButton setBackgroundImage:[[UIImage imageNamed:@"like.png"]
+                                      resizableImageWithCapInsets:UIEdgeInsetsMake(10, 10, 10, 10)]
+                            forState:UIControlStateNormal];
+    
+    [customButton setBackgroundImage:[[UIImage imageNamed:@"likeHighlighted.png"]
+                                      resizableImageWithCapInsets:UIEdgeInsetsMake(10, 10, 10, 10)]
+                            forState:UIControlStateHighlighted];
+    
+    [customButton setTitleColor:[UIColor blueColor]
+                       forState:UIControlStateNormal];
+    [ufi addSubview:customButton];
     
     
     //SupportText
