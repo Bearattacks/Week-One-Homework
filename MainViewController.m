@@ -20,7 +20,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+
     }
     return self;
 }
@@ -28,6 +28,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIView *commentImageView = [[UIView alloc] initWithFrame:CGRectMake(200, 100, 100, 100)];
+    
+    [self.view addSubview:commentImageView ];
     
     // I got curious and tried out the scroll view, I also wanted everything to fit on the 3.5 inch phone.
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
@@ -65,7 +69,7 @@
     
     
     //Post Container View
-    UIView *postContainerView = [[UIView alloc] initWithFrame:CGRectMake(10, 70, 300, 700)];
+    UIView *postContainerView = [[UIView alloc] initWithFrame:CGRectMake(10, 70, 300, 406)];
     postContainerView.backgroundColor = [UIColor whiteColor];
     postContainerView.layer.cornerRadius = 3.f;
     [scrollView addSubview:postContainerView];
@@ -115,12 +119,49 @@
     [postContainerView addSubview:ufi];
     
     //Like Button - within UFI
+    UILabel *likeText = [[UILabel alloc] initWithFrame:CGRectMake(42, 0, 40, 40)];
+    likeText.text = @"Like";
+    likeText.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:12];
+    likeText.textColor = [UIColor colorWithRed:0.608 green:0.620 blue:0.639 alpha:1.000];
+    [ufi addSubview:likeText];
+    
+    //Like image
+    UIImage *like = [UIImage imageNamed:@"like"];
+    UIImageView *likeImageView = [[UIImageView alloc] initWithImage:like];
+    likeImageView.frame = CGRectMake(20, 1, like.size.width, like.size.height);
+    [ufi addSubview:likeImageView];
+ 
+    //comment image
+    UIImage *commentIcon = [UIImage imageNamed:@"comment"];
+    UIImageView *commmentIconImageView = [[UIImageView alloc] initWithImage:commentIcon];
+    commmentIconImageView.frame = CGRectMake(105, 1, commentIcon.size.width, commentIcon.size.height);
+    [ufi addSubview:commmentIconImageView];
+    
+    //Share Icon
+    UIImage *ufiShareIcon = [UIImage imageNamed:@"ufiShareIcon"];
+    UIImageView *ufiShareIconView = [[UIImageView alloc] initWithImage:ufiShareIcon];
+    ufiShareIconView.frame = CGRectMake(215, 12, ufiShareIcon.size.width, ufiShareIcon.size.height);
+    [ufi addSubview:ufiShareIconView];
+    
+    //commentText - within UFI
+    UILabel *commentText = [[UILabel alloc] initWithFrame:CGRectMake(128, 0, 300, ufiImage.size.height)];
+    commentText.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:12];
+    commentText.textColor = [UIColor colorWithRed:0.608 green:0.620 blue:0.639 alpha:1.000];
+    commentText.text = @"Comment";
+    [ufi addSubview:commentText];
 
+    //shareText - within UFI
+    UILabel *shareText = [[UILabel alloc] initWithFrame:CGRectMake(238, 0, 300, ufiImage.size.height)];
+    shareText.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:12];
+    shareText.textColor = [UIColor colorWithRed:0.608 green:0.620 blue:0.639 alpha:1.000];
+    shareText.text = @"Share";
+    [ufi addSubview:shareText];
+    
     
     //SupportText
-    NSString *supportingTextString = @"1,675 people like this";
+    NSString *supportingTextString = @"1,675 people like this.";
 
-        UILabel *supportingText = [[UILabel alloc] initWithFrame:CGRectMake(16, 363, 320, 44)];
+        UILabel *supportingText = [[UILabel alloc] initWithFrame:CGRectMake(12, 363, 320, 44)];
     supportingText.text = supportingTextString;
         supportingText.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
         supportingText.textColor = [UIColor blackColor];
@@ -160,52 +201,20 @@
         [supportingText setText:supportingTextString];
         
     }
-    
-    
-//    //Using Attributed Text
-//    NSString *likeCount = @"1,675 people";
-//    NSString *helperString = @"like this.";
-//    
-//    NSString *text = [NSString stringWithFormat:@"%@ %@", likeCount, helperString];
-//    
-//    // If attributed text is supported (iOS6+)
-//    if ([supportingText respondsToSelector:@selector(setAttributedText:)]) {
-//        
-//        // Define general attributes for the entire text
-//        NSDictionary *attribs = @{
-//                                  NSForegroundColorAttributeName: supportingText.textColor,
-//                                  NSFontAttributeName: supportingText.font
-//                                  };
-//        
-//        NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:text attributes:attribs];
-//        
-//        // Like Count
-//        UIColor *likeCountTreatment = [UIColor redColor];
-//        NSRange likeCountRange = [text rangeOfString:likeCount];
-//        [attributedText setAttributes:@{NSForegroundColorAttributeName:likeCountTreatment}
-//                                range:likeCountRange];
-//        
-//        // Helper String
-//        UIColor *helperStringTreatment = [UIColor greenColor];
-//        NSRange helperStringTextRange = [text rangeOfString:helperString];
-//        [attributedText setAttributes:@{NSForegroundColorAttributeName:helperStringTreatment}
-//                                range:helperStringTextRange];
-//        
-//       supportingText.attributedText = attributedText;
-//    }
-//    // If attributed text is NOT supported (iOS5-)
-//    else {
-//        supportingText.text = text;
-//    }
-//    
+    UIImage *commentBackground = [[UIImage imageNamed:@"textfield"] stretchableImageWithLeftCapWidth:20 topCapHeight:20];
 
-    
+    UITextField *commentbox = [[UITextField alloc] initWithFrame:CGRectMake(20, 394, 240, commentBackground.size.height)];
+    commentbox.text = @"  Write a comment...";
+    commentbox.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
+    commentbox.textColor = [UIColor colorWithRed:0.647 green:0.647 blue:0.647 alpha:1.000];
+    [commentbox setBackground:commentBackground];
+    [self.view addSubview:commentbox];
     
     //Comment Bar Image
     UIImage *commentbar = [UIImage imageNamed:@"commentbar"];
-    UIImageView *commentbarImageView = [[UIImageView alloc] initWithImage:commentbar];
-    commentbarImageView.frame = CGRectMake(0, 394, 320, commentbar.size.height);
-    [self.view addSubview:commentbarImageView];
+    UIImageView *commentBarImageView = [[UIImageView alloc] initWithImage:commentbar];
+    commentBarImageView.frame = CGRectMake(0, 394, 320, commentbar.size.height);
+    [self.view addSubview:commentBarImageView];
     
     //Tab Bar Image
     UIImage *tabbar = [UIImage imageNamed:@"tabbar"];
@@ -214,6 +223,7 @@
     [self.view addSubview:tabbarImageView];
     
 }
+
 
 - (void)didReceiveMemoryWarning
 {
