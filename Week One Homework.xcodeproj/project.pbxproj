@@ -20,6 +20,7 @@
 		BF7A13E4194D46A50002BC0B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF7A13E2194D46A50002BC0B /* InfoPlist.strings */; };
 		BF7A13E6194D46A50002BC0B /* Week_One_HomeworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7A13E5194D46A50002BC0B /* Week_One_HomeworkTests.m */; };
 		BF7A13F1194D46B20002BC0B /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF7A13F0194D46B20002BC0B /* MainViewController.m */; };
+		BF92B260194FE39E00828188 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BF92B25F194FE39E00828188 /* TTTAttributedLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		BF7A13E5194D46A50002BC0B /* Week_One_HomeworkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Week_One_HomeworkTests.m; sourceTree = "<group>"; };
 		BF7A13EF194D46B20002BC0B /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		BF7A13F0194D46B20002BC0B /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		BF92B25E194FE39E00828188 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTTAttributedLabel.h; path = "Week One Homework/TTTAttributedLabel.h"; sourceTree = "<group>"; };
+		BF92B25F194FE39E00828188 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTTAttributedLabel.m; path = "Week One Homework/TTTAttributedLabel.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +83,8 @@
 		BF7A13B4194D46A50002BC0B = {
 			isa = PBXGroup;
 			children = (
+				BF92B25E194FE39E00828188 /* TTTAttributedLabel.h */,
+				BF92B25F194FE39E00828188 /* TTTAttributedLabel.m */,
 				BF7A13EF194D46B20002BC0B /* MainViewController.h */,
 				BF7A13F0194D46B20002BC0B /* MainViewController.m */,
 				BF7A13C6194D46A50002BC0B /* Week One Homework */,
@@ -247,6 +252,7 @@
 				BF7A13D1194D46A50002BC0B /* AppDelegate.m in Sources */,
 				BF7A13F1194D46B20002BC0B /* MainViewController.m in Sources */,
 				BF7A13CD194D46A50002BC0B /* main.m in Sources */,
+				BF92B260194FE39E00828188 /* TTTAttributedLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

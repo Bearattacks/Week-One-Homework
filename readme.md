@@ -1,11 +1,9 @@
-
-
 # Week One Homework
 Time: 7hrs
 
 [✓] Add a container view and modify properties: backgroundColor, cornerRadius, font, textColor, shadowOffset.
 
-[-] Add buttons with different images for default and highlighted. (I was doing this programmatically, and I don’t think I’m doing this right. I do know how to do this with a XIB). 
+[✓] Add buttons with different images for default and highlighted.
 
 [✓] Add UIImageViews and choose the right mode: aspect fill, aspect fit, etc.
 
@@ -19,7 +17,7 @@ Time: 7hrs
 
 [] Optional: Configure the autoresizingMasks to support rotation
 
-[✓] Optional: Implement the same page programatically without using Interface Builder
+[✓] Optional: Implement the same page programatically without using Interface Builder.
 
 ### Notes
 * I went back and attempted to do everything programmatically. Buttons were especially confusing, I probably should have stuck the XIB this week.

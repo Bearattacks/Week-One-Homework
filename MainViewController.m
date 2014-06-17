@@ -8,6 +8,7 @@
 
 #import "MainViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "TTTAttributedLabel.h"
 
 
 @interface MainViewController ()
@@ -69,7 +70,13 @@
     postContainerView.backgroundColor = [UIColor whiteColor];
     postContainerView.layer.cornerRadius = 3.f;
     [scrollView addSubview:postContainerView];
-    
+
+    postContainerView.layer.masksToBounds = NO;
+    postContainerView.layer.shadowColor = [UIColor blackColor].CGColor;
+    postContainerView.layer.shadowOpacity = 0.2;
+    postContainerView.layer.shadowRadius = 2;
+    postContainerView.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
+
     
     //Page Avatar Image
     UIImage *profpic = [UIImage imageNamed:@"profpic"];
@@ -92,11 +99,22 @@
     [postContainerView addSubview:minutae];
     
     //Post Text
-    UILabel *postText = [[UILabel alloc] initWithFrame:CGRectMake(10, 40, 280, 90)];
+    TTTAttributedLabel *postText = [[TTTAttributedLabel alloc] initWithFrame:CGRectMake(10, 40, 280, 90)];
     postText.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
     postText.textColor = [UIColor blackColor];
     postText.backgroundColor = [UIColor colorWithRed:1.000 green:1.000 blue:1.000 alpha:0.000];
     postText.numberOfLines = 5;
+    postText.enabledTextCheckingTypes = NSTextCheckingTypeLink;
+
+    NSArray *keys = [[NSArray alloc] initWithObjects:(id)kCTForegroundColorAttributeName,(id)kCTUnderlineStyleAttributeName
+                     , nil];
+    UIColor *linkColor = [UIColor colorWithRed:0.267 green:0.388 blue:0.624 alpha:1.000];
+    NSArray *objects = [[NSArray alloc] initWithObjects:linkColor,[NSNumber numberWithInt:kCTUnderlineStyleNone], nil];
+    NSDictionary *linkAttributes = [[NSDictionary alloc] initWithObjects:objects forKeys:keys];
+    postText.linkAttributes = linkAttributes;
+
+
+
     
     postText.text = @"From collarless shirts to high-waisted pants, #Her's costume designer, Casey Storm, expalins how he created his fashion looks for the future. http://bit.ly/1jv9zm8";
     
@@ -121,12 +139,6 @@
     likeText.textColor = [UIColor colorWithRed:0.608 green:0.620 blue:0.639 alpha:1.000];
     [ufi addSubview:likeText];
     
-    //Like image
-    UIImage *like = [UIImage imageNamed:@"like"];
-    UIImageView *likeImageView = [[UIImageView alloc] initWithImage:like];
-    likeImageView.frame = CGRectMake(20, 1, like.size.width, like.size.height);
-    [ufi addSubview:likeImageView];
- 
     //comment image
     UIImage *commentIcon = [UIImage imageNamed:@"comment"];
     UIImageView *commmentIconImageView = [[UIImageView alloc] initWithImage:commentIcon];
@@ -154,28 +166,20 @@
     [ufi addSubview:shareText];
     
 
-    //Trying out a basic button
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button setTitle:@"Like" forState:UIControlStateNormal];
-    [ufi addSubview:button];
-    
-    //This was the code I was trying to use to figure how to make custom buttons without XIB
+    //Button Code
+    UIImage *likeNormal = [UIImage imageNamed:@"like"];
+    UIImage *likeHighlighted = [UIImage imageNamed:@"likeHighlighted"];
+
     UIButton *customButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [customButton setTitle:@"Like" forState:UIControlStateNormal];
-    [customButton setContentEdgeInsets:UIEdgeInsetsMake(0, 4, 0, 4)];
+
+    [customButton setContentEdgeInsets:UIEdgeInsetsMake(8, 8, 10, 10)];
     [customButton sizeToFit];
-    customButton.center = CGPointMake(70, 20);
+    customButton.center = CGPointMake(30, 21);
     
-    [customButton setBackgroundImage:[[UIImage imageNamed:@"like.png"]
-                                      resizableImageWithCapInsets:UIEdgeInsetsMake(10, 10, 10, 10)]
-                            forState:UIControlStateNormal];
+    [customButton setBackgroundImage:likeNormal forState:UIControlStateNormal];
+    [customButton setBackgroundImage:likeHighlighted forState:UIControlStateHighlighted];
     
-    [customButton setBackgroundImage:[[UIImage imageNamed:@"likeHighlighted.png"]
-                                      resizableImageWithCapInsets:UIEdgeInsetsMake(10, 10, 10, 10)]
-                            forState:UIControlStateHighlighted];
-    
-    [customButton setTitleColor:[UIColor blueColor]
-                       forState:UIControlStateNormal];
+    [customButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [ufi addSubview:customButton];
     
     
@@ -224,6 +228,7 @@
     }
     UIImage *commentBackground = [[UIImage imageNamed:@"textfield"] stretchableImageWithLeftCapWidth:20 topCapHeight:20];
 
+    
     UITextField *commentbox = [[UITextField alloc] initWithFrame:CGRectMake(20, 394, 240, commentBackground.size.height)];
     commentbox.text = @"  Write a comment...";
     commentbox.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
@@ -244,6 +249,7 @@
     [self.view addSubview:tabbarImageView];
     
 }
+
 
 
 - (void)didReceiveMemoryWarning
