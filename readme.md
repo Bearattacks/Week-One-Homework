@@ -1,7 +1,7 @@
 # Week One Homework
 Time: 7hrs
 
-![alt text](https://raw.githubusercontent.com/Bearattacks/Week-One-Homework/master/walkthrough.gif “Walkthrough”)
+![alt text](https://raw.githubusercontent.com/Bearattacks/Week-One-Homework/master/walkthrough.gif)
 
 
 [✓] Add a container view and modify properties: backgroundColor, cornerRadius, font, textColor, shadowOffset.
